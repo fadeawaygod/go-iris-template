@@ -1,15 +1,17 @@
 package main
 
-import "github.com/kataras/iris/v12"
+import (
+	"go-iris-template/handler"
+
+	"github.com/kataras/iris/v12"
+)
 
 func main() {
 	app := iris.Default()
 	//app.Use(myMiddleware)
 
 	// general
-	app.Handle("GET", "/contact", func(ctx iris.Context) {
-		ctx.HTML("<h1> Hello from /contact </h1>")
-	})
+	app.Handle("GET", "/contact", handler.GetContact)
 	app.Get("/ping", func(ctx iris.Context) {
 		ctx.WriteString("pong")
 	})
